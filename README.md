@@ -18,7 +18,7 @@ Environment Management: Python-dotenv
 
 Installation
 1. Clone the repository
-git clone https://github.com/username/repository-name.git
+git clone https://github.com/NghiaNguyxn/User-Authentication-System.git
 cd repository-name
 2. Set up a virtual environment
 python -m venv venv
