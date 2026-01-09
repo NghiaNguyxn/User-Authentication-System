@@ -17,11 +17,11 @@ async def get_current_user(db : SessionDep, token: Annotated[str, Depends(oauth2
         headers={"WWW-Authenticate": "Bearer"},
     )
 
-    username = security.verify_token(token)
-    if username is None:
+    token_data = security.verify_token(token)
+    if token_data is None:
         raise credentials_exception
     
-    user = crud.get_user_by_username_or_email(db, username)
+    user = crud.get_user_by_username_or_email(db, token_data.username)
     if user is None:
         raise credentials_exception
     

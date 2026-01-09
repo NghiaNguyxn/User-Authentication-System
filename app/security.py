@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 from jwt.exceptions import InvalidTokenError
 from pwdlib import PasswordHash
 
+from app import models
 from app.config import settings
 
 # PasswordHashing
@@ -34,7 +35,7 @@ def verify_token(token: str):
         username: str = payload.get("sub")
         if username is None:
             return None
-        return username
+        return models.TokenData(username)
     except InvalidTokenError:
         return None
     
